@@ -41,7 +41,7 @@ namespace PyaFramework.Services
             for (var index = 0; index < options.Length; index++)
             {
                 Write(colour, $"Press {index + 1}: {options[index]}");
-                NewLine();
+                SkipLine();
             }
             int input;
             do
@@ -50,6 +50,6 @@ namespace PyaFramework.Services
             return input;
         }
 
-        public static void NewLine() => Console.WriteLine();
+        public static void SkipLine() => Console.WriteLine();
     }
 }
