@@ -5,7 +5,7 @@ namespace PyaFramework.Services
 {
     public static partial class ColourConsole
     {
-        public static int GetChoice(ConsoleColor colour, string[] options)
+        public static int GetChoice(ConsoleColor colour, params string[] options)
         {
             for (var index = 0; index < options.Length; index++)
             {
