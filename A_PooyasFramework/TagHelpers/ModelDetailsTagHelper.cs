@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using PyaFramework.Core;
+using ToReorganise;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PyaFramework.TagHelpers
+namespace myCoreMvc.ToReorganise
 {
     [HtmlTargetElement("ModelDetails")]
     public class ModelDetailsTagHelper : TagHelper

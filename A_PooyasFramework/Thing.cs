@@ -1,11 +1,11 @@
-﻿using System;
+﻿using PyaFramework.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using PyaFramework.Interfaces;
 
-namespace PyaFramework.Models
+namespace ToReorganise
 {
     public class Thing : IClonable
     {

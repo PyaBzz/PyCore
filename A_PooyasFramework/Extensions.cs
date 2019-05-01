@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Html;
-using PyaFramework.Interfaces;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Data.SqlClient;
+using PyaFramework.Core;
 
-namespace PyaFramework.Extensions
+namespace ToReorganise
 {
     public static class Extensions
     {
@@ -128,6 +130,17 @@ namespace PyaFramework.Extensions
                 controllerName: thisHelper.ShortNameOf<T>(),
                 routeValues: new { id = routeId }
                 );
+        }
+
+        public static string[] GetNonRelationalColumnNames(this SqlDataReader @this)
+        {
+            var columns = new List<string>();
+            for (var i = 0; i < @this.FieldCount; i++)
+            {
+                if (@this.GetDataTypeName(i) != "uniqueidentifier")
+                    columns.Add(@this.GetName(i));
+            }
+            return columns.ToArray();
         }
     }
 }
