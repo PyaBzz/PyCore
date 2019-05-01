@@ -92,5 +92,16 @@ namespace PyaFramework.Core
                 source = source.Where(i => filter(i));
             return source;
         }
+
+        //public static string[] GetNonRelationalColumnNames(this SqlDataReader @this)
+        //{
+        //    var columns = new List<string>();
+        //    for (var i = 0; i < @this.FieldCount; i++)
+        //    {
+        //        if (@this.GetDataTypeName(i) != "uniqueidentifier")
+        //            columns.Add(@this.GetName(i));
+        //    }
+        //    return columns.ToArray();
+        //}
     }
 }
