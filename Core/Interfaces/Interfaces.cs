@@ -39,7 +39,7 @@ namespace PyaFramework.Core
     public interface IUserService
     {
         Task<bool> GetPrincipal(string userName, string passWord, out ClaimsPrincipal claimsPrincipal);
-        Task<bool> ValidateCredentials(string userName, string passWord, out IUser user); //Task: Replace with IUser to loose couple it. Framework must not depend on project!
+        Task<bool> ValidateCredentials(string userName, string passWord, out IUser user);
         TransactionResult Save(IUser user); //Task: Add delete too
         TransactionResult SetPassword(Guid id, string password);
     }
