@@ -6,28 +6,36 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.AspNetCore.Html;
 using PyaFramework.Core;
+using System.Dynamic;
 
 namespace PyaFramework.CoreMvc
 {
     public static class Extensions
     {
-        public static string ShortNameOf<T>(this IHtmlHelper helper) where T : Controller
-        {
-            return typeof(T).Name.TrimEnd("Controller");
-        }
+        public static string ShortNameOf<T>(this IHtmlHelper @this) where T : Controller
+            => typeof(T).Name.TrimEnd("Controller");
 
-        public static IHtmlContent LinkToAction<T>(this IHtmlHelper thisHelper, string actionName, string linkText) where T : Controller
+        public static IHtmlContent LinkToAction<ControllerType>(this IHtmlHelper @this, string methodName, string linkText = null, Guid id = default(Guid)) where ControllerType : Controller
         {
-            return thisHelper.ActionLink(linkText, actionName, thisHelper.ShortNameOf<T>());
-        }
+            var caption = linkText ?? methodName;
+            var controllerAreaAttribute = typeof(ControllerType).GetCustomAttribute(typeof(AreaAttribute));
 
-        public static IHtmlContent LinkToAction<T>(this IHtmlHelper thisHelper, string actionName, string linkText, Guid routeId) where T : Controller
-        {
-            return thisHelper.ActionLink(
-                linkText: linkText,
-                actionName: actionName,
-                controllerName: thisHelper.ShortNameOf<T>(),
-                routeValues: new { id = routeId }
+            dynamic routeValues = new ExpandoObject();
+
+            if (controllerAreaAttribute != null)
+            {
+                var areaName = typeof(AreaAttribute).GetProperty("RouteValue").GetValue(controllerAreaAttribute);
+                routeValues.area = areaName;
+            }
+
+            if (id != Guid.Empty)
+                routeValues.id = id;
+
+            return @this.ActionLink(
+                linkText: caption,
+                actionName: methodName,
+                controllerName: @this.ShortNameOf<ControllerType>(),
+                routeValues: routeValues as object
                 );
         }
     }

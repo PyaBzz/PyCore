@@ -33,9 +33,9 @@ namespace PyaFramework.Middleware
                     if (e is AntiforgeryValidationException)
                     {
                         valid = false;
-                        context.Response.Redirect(context.Request.PathBase + "ListOfWorkItems?message=Not%20allowed");
-                        // Or you can write directly into the response like this:
-                        //await context.Response.WriteAsync("Not allowed!");
+                        // Redirect or directly write into the response
+                        //context.Response.Redirect(context.Request.PathBase + "WorkItems/ListOfWorkItems?message=Not%20allowed");
+                        await context.Response.WriteAsync("Not allowed!");
                     }
                 }
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PyaFramework.TagHelpers
 {
-    [HtmlTargetElement("ModelDetails")]
+    [HtmlTargetElement(tag: "ModelDetails")]
     public class ModelDetailsTagHelper : TagHelper
     {
         public Thing TagModel { get; set; }
@@ -14,9 +14,8 @@ namespace PyaFramework.TagHelpers
         {
             base.Process(context, output);
             var existingContent = await output.GetChildContentAsync();
-            var requestPath = $"/DetailsOf{TagModel.GetType().Name}/Delete/{TagModel.Id}";
+            //Task: Use StringBuilder or make this a single interpolated literal string
             var content = $"<table style='width: 100%'>" +
-                            "<button id='delete'>Delete</button>" +
                             "<tbody>" +
                              TagModel.GetType().GetPublicInstancePropertyInfos().Select(pi =>
                               $"<tr>" +
@@ -24,18 +23,8 @@ namespace PyaFramework.TagHelpers
                                $"<td style='width: 70%; border: 2px solid deepskyblue'>{pi.GetValue(TagModel)}</td>" +
                               $"</tr>").ToString("") +
                             "</tbody>" +
-                            "</table>" +
+                            "</table>";
 
-                            "<script>" +
-                             "var deleteButton = document.getElementById('delete');" +
-                             "deleteButton.onclick = function() {" +
-                              $"var confirmed = confirm('Are you sure you want to delete this {TagModel.GetType().Name}?');" +
-                              "if (confirmed) {" +
-                               $"var url = window.location.origin + '{requestPath}';" +
-                               "window.location.href = url;" +
-                              "}" +
-                             "};" +
-                            "</script>";
             output.Content.AppendHtml(existingContent);
             output.Content.AppendHtml(content);
             output.TagMode = TagMode.StartTagAndEndTag;
