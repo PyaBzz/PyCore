@@ -76,6 +76,7 @@ namespace PyaFramework.Core
 
         public static string GetStringOfProperties<T>(this T obj)
         { //Task: See if there's any built-in object binding facility in NetCore.
+            //Task: Use string builder
             var result = string.Empty;
             var strings = new List<string>();
             foreach (var propInfo in typeof(T).GetPublicInstancePropertyInfos())
