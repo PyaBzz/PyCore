@@ -74,18 +74,9 @@ namespace PyaFramework.Core
         public static IEnumerable<PropertyInfo> GetPublicDeclaredInstancePropertyInfos(this Type T)
             => T.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public);
 
+        //Task: See if there's any built-in object binding facility in NetCore.
         public static string GetStringOfProperties<T>(this T obj)
-        { //Task: See if there's any built-in object binding facility in NetCore.
-            //Task: Use string builder
-            var result = string.Empty;
-            var strings = new List<string>();
-            foreach (var propInfo in typeof(T).GetPublicInstancePropertyInfos())
-            {
-                var value = propInfo.GetValue(obj) ?? string.Empty;
-                strings.Add(value.ToString());
-            }
-            return strings.ToString(" ");
-        }
+            => typeof(T).GetPublicInstancePropertyInfos().Select(propInfo => propInfo.GetValue(obj)).ToString(" ");
 
         public static IEnumerable<T> AppliedWithFilters<T>(this IEnumerable<T> source, IEnumerable<Func<T, bool>> filters)
         {
