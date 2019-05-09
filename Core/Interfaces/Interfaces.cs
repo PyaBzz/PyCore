@@ -1,46 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace PyaFramework.Core
 {
-    public interface IClonable
+    public interface IClonable { }
+
+    public static partial class Extensions
     {
-    }
-    public interface IThing : IClonable
-    {
-        Guid Id { get; set; }
-    }
-    public interface IUser : IThing
-    {
-        string Name { get; set; }
-        DateTime DateOfBirth { get; set; }
-        string Role { get; set; } //Task: Make Role a type it needs to be linked to Access Level somehow. Can we?
-        byte[] Salt { get; set; }
-        string Hash { get; set; }
-    }
-    public interface IDataProvider
-    {
-        List<T> GetList<T>() where T : class, IThing;
-        List<T> GetList<T>(Func<T, bool> func) where T : class, IThing;
-        T Get<T>(Func<T, bool> func) where T : class, IThing;
-        T Get<T>(Guid id) where T : class, IThing;
-        List<T> GetListIncluding<T>(params Expression<Func<T, object>>[] includeProperties) where T : class, IThing;
-        List<T> GetListIncluding<T>(Func<T, bool> predicate, params Expression<Func<T, object>>[] includeProperties) where T : class, IThing;
-        //Lesson: Why don't we say: TransactionResult Add(Thing obj)?
-        // Because then in order to use it with any derived class off Thing,
-        // we'd have to cast the subclass to Thing or use "as List<Thing>"
-        TransactionResult Add<T>(T obj) where T : class, IThing;
-        TransactionResult Update<T>(T obj) where T : class, IThing;
-        TransactionResult Delete<T>(Guid id) where T : class, IThing;
-    }
-    public interface IUserService
-    {
-        Task<bool> GetPrincipal(string userName, string passWord, out ClaimsPrincipal claimsPrincipal);
-        Task<bool> ValidateCredentials(string userName, string passWord, out IUser user);
-        TransactionResult Save(IUser user); //Task: Add delete too
-        TransactionResult SetPassword(Guid id, string password);
+        /// <summary>
+        /// Returns an object that is member-wise copy of the given instance.
+        /// </summary>
+        /// <typeparam name="T">is any type that implements IClonable interface.</typeparam>
+        /// <param name="origin"></param>
+        /// <returns></returns>
+        public static T Clone<T>(this T origin) where T : IClonable, new()
+        {
+            var result = new T();
+            var propertyInfos = typeof(T).GetPublicDeclaredInstancePropertyInfos();
+            foreach (var propertyInfo in propertyInfos)
+                propertyInfo.SetValue(result, propertyInfo.GetValue(origin));
+            return result;
+        }
+
+        public static T CopyPropertiesFrom<T>(this T target, T origin) where T : IClonable
+        {
+            var propertyInfos = typeof(T).GetPublicDeclaredInstancePropertyInfos();
+            foreach (var propertyInfo in propertyInfos)
+                propertyInfo.SetValue(target, propertyInfo.GetValue(origin));
+            return target;
+        }
+
+        public static T CopyPropertiesTo<T>(this T origin, T target) where T : IClonable
+        {
+            var propertyInfos = typeof(T).GetPublicDeclaredInstancePropertyInfos();
+            foreach (var propertyInfo in propertyInfos)
+                propertyInfo.SetValue(target, propertyInfo.GetValue(origin));
+            return origin;
+        }
+
+        public static T CopySimilarPropertiesFrom<T, U>(this T it, U origin) where T : IClonable
+        {
+            // We need to have two separate sets of PropInfos because they are unique to their types!
+            var propertyInfosOfT = typeof(T).GetPublicInstancePropertyInfos();
+            var propertyInfosOfU = typeof(U).GetPublicInstancePropertyInfos();
+            foreach (var propertyInfo in propertyInfosOfT)
+            {
+                var correspondingPiOfU = propertyInfosOfU.SingleOrDefault(pi => pi.Name == propertyInfo.Name && pi.PropertyType == propertyInfo.PropertyType);
+                if (correspondingPiOfU != null)
+                {
+                    var value = typeof(U).GetProperty(propertyInfo.Name).GetValue(origin);
+                    propertyInfo.SetValue(it, value);
+                }
+            }
+            return it;
+        }
     }
 }

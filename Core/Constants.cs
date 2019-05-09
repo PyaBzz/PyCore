@@ -2,8 +2,6 @@
 {
     public enum Injection { Singleton, Transient };
 
-    public enum TransactionResult { Added, Updated, Deleted, NotFound, Failed }
-
     public static class AuthConstants
     {
         public const string SchemeName = "Cookies";
