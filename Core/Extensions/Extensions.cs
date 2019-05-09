@@ -17,6 +17,9 @@ namespace PyaFramework.Core
         public static string ToString<T>(this IEnumerable<T> source, string separator)
             => string.Join(separator, source);
 
+        public static IEnumerable<T> OrEmpty<T>(this IEnumerable<T> source)
+            => source ?? new List<T>();
+
         public static bool Lacks<T>(this IEnumerable<T> @this, T element)
             => @this.Contains(element) == false;
 
