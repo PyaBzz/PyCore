@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Microsoft.AspNetCore.Html;
-using PyaFramework.Core;
 
 namespace PyaFramework.Core
 {
@@ -13,6 +9,9 @@ namespace PyaFramework.Core
     {
         public static string TrimEnd(this string @this, string tail)
             => @this.EndsWith(tail) ? @this.Remove(@this.Length - tail.Length) : @this;
+
+        public static bool HasValue(this string @this)
+            => @this != null && @this != string.Empty;
 
         public static string ToString<T>(this IEnumerable<T> source, string separator)
             => string.Join(separator, source);
@@ -24,6 +23,13 @@ namespace PyaFramework.Core
             => @this.Contains(element) == false;
 
         public static IEnumerable<T> AppliedWithFilters<T>(this IEnumerable<T> source, IEnumerable<Func<T, bool>> filters)
+        {
+            foreach (var filter in filters)
+                source = source.Where(i => filter(i));
+            return source;
+        }
+
+        public static IEnumerable<T> AppliedWithFilters<T>(this IEnumerable<T> source, IEnumerable<Predicate<T>> filters)
         {
             foreach (var filter in filters)
                 source = source.Where(i => filter(i));
