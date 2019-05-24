@@ -21,9 +21,9 @@ namespace PyaFramework.TagHelpers
             builder.Append("<tbody>");
             foreach (var propertyInfo in Object.GetType().GetPublicInstancePropertyInfos())
             {
-                builder.Append("<tr>");
+                builder.Append($"<tr data-elem=\"{propertyInfo.Name}\">");
                 builder.Append($"<td style='width: 30%; border: 2px solid cornflowerblue'>{propertyInfo.Name}</td>");
-                builder.Append($"<td style='width: 70%; border: 2px solid deepskyblue'>{propertyInfo.GetValue(Object)}</td>");
+                builder.Append($"<td style='width: 70%; border: 2px solid deepskyblue' data-elem=\"Value\">{propertyInfo.GetValue(Object)}</td>");
                 builder.Append("</tr>");
             }
             builder.Append("</tbody>");
