@@ -36,7 +36,7 @@ namespace PyaFramework.TagHelpers
             var requestPath = $"{areaPrefix}/{controllerShortName}/{MethodName}/{RouteParameter}";
             var randomSuffix = new Random().Next(100);
 
-            var content = $@"<button id='ActionWithConfirm{randomSuffix}' data-elem='Delete'>Delete</button>
+            var content = $@"<button id='ActionWithConfirm{randomSuffix}' probe='Delete'>Delete</button>
                             <script>
                              var deleteButton = document.getElementById('ActionWithConfirm{randomSuffix}');
                              deleteButton.onclick = function() {{
