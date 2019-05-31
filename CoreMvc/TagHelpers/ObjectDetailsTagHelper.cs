@@ -3,7 +3,7 @@ using PyaFramework.Core;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PyaFramework.TagHelpers
+namespace PyaFramework.CoreMvc.TagHelpers
 {
     [HtmlTargetElement(tag: "ObjectDetails", Attributes = "Object")]
     public class ObjectDetailsTagHelper : TagHelper

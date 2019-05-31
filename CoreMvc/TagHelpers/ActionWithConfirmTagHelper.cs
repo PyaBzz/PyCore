@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using PyaFramework.Core;
+using PyaFramework.CoreMvc;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace PyaFramework.TagHelpers
+namespace PyaFramework.CoreMvc.TagHelpers
 {
     [HtmlTargetElement(tag: "ActionWithConfirm", TagStructure = TagStructure.WithoutEndTag, Attributes = "controller-type, method-name")]
     public class ActionWithConfirmTagHelper : TagHelper
@@ -27,12 +28,9 @@ namespace PyaFramework.TagHelpers
             else
                 confirmationMessage += "?";
 
-            var controllerAreaAttribute = ControllerType.GetCustomAttribute(typeof(AreaAttribute));
-            var areaPrefix = string.Empty;
-            if (controllerAreaAttribute != null)
-                areaPrefix += "/" + typeof(AreaAttribute).GetProperty("RouteValue").GetValue(controllerAreaAttribute);
+            var areaPrefix = "/" + Area.Of(ControllerType);
 
-            var controllerShortName = ControllerType.Name.TrimEnd("Controller");
+            var controllerShortName = ShortName.Of(ControllerType);
             var requestPath = $"{areaPrefix}/{controllerShortName}/{MethodName}/{RouteParameter}";
             var randomSuffix = new Random().Next(100);
 

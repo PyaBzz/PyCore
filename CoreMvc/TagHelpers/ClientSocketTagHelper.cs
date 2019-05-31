@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace PyaFramework.TagHelpers
+namespace PyaFramework.CoreMvc.TagHelpers
 {
     public class ClientSocketTagHelper : TagHelper
     {
