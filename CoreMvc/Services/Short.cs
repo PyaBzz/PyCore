@@ -7,11 +7,14 @@ using System.Text;
 
 namespace PyaFramework.CoreMvc
 {
+    public static class Short<T> where T : Controller
+    {
+        public static string Name =>
+            typeof(T).Name.TrimEnd("Controller");
+    }
+
     public static class ShortName
     {
-        public static string Of<T>() where T : Controller
-            => typeof(T).Name.TrimEnd("Controller");
-
         public static string Of(Type T)
         {
             if (T.IsSubclassOf(typeof(Controller)) == false)
