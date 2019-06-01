@@ -30,7 +30,7 @@ namespace PyaFramework.CoreMvc.TagHelpers
 
             var areaPrefix = "/" + Area.Of(ControllerType);
 
-            var controllerShortName = ShortName.Of(ControllerType);
+            var controllerShortName = Short.NameOf(ControllerType);
             var requestPath = $"{areaPrefix}/{controllerShortName}/{MethodName}/{RouteParameter}";
             var randomSuffix = new Random().Next(100);
 

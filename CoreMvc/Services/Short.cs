@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PyaFramework.Core;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace PyaFramework.CoreMvc
 {
@@ -13,9 +11,9 @@ namespace PyaFramework.CoreMvc
             typeof(T).Name.TrimEnd("Controller");
     }
 
-    public static class ShortName
+    public static class Short
     {
-        public static string Of(Type T)
+        public static string NameOf(Type T)
         {
             if (T.IsSubclassOf(typeof(Controller)) == false)
                 throw new ValidationException("The provided type isn't controller!");
