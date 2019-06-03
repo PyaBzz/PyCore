@@ -17,7 +17,6 @@ namespace PyaFramework.CoreMvc.TagHelpers
         public string ItemName { get; set; }
         public string RouteParameter { get; set; }
 
-        //Task: Use this tag everywhere a button needs confirmation
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             base.Process(context, output);
