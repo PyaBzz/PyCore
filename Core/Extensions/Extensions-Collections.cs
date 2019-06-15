@@ -9,6 +9,9 @@ namespace PyaFramework.Core
         public static string ToString<T>(this IEnumerable<T> source, string separator)
             => string.Join(separator, source);
 
+        public static string ToStringReversed<T>(this IEnumerable<T> source, string separator)
+            => string.Join(separator, source.Reverse());
+
         public static IEnumerable<T> OrEmpty<T>(this IEnumerable<T> source)
             => source ?? new List<T>();
 
