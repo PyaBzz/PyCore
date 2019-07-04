@@ -17,7 +17,7 @@ namespace PyaFramework.CoreMvc.TagHelpers
         public string ItemName { get; set; }
         public string RouteParameter { get; set; }
 
-        public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
+        public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             base.Process(context, output);
 
