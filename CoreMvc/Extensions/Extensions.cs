@@ -1,4 +1,4 @@
-﻿namespace PyaFramework.CoreMvc
+﻿namespace Py.CoreMvc
 {
     public static class Extensions
     {

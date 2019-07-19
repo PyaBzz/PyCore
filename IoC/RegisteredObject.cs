@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PyaFramework.IoC
+namespace Py.IoC
 {
     public class RegisteredObject
     {

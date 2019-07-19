@@ -1,4 +1,4 @@
-﻿namespace PyaFramework.Core
+﻿namespace Py.Core
 {
     public static partial class Extensions
     {

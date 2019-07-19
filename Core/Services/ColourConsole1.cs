@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace PyaFramework.Services
+namespace Py.Services
 {
     public static partial class ColourConsole
     {

@@ -1,4 +1,4 @@
-﻿namespace PyaFramework.Core
+﻿namespace Py.Core
 {
     public enum Injection { Singleton, Transient };
 

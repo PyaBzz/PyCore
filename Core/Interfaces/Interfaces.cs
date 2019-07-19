@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace PyaFramework.Core
+namespace Py.Core
 {
     public interface IClonable { }
 

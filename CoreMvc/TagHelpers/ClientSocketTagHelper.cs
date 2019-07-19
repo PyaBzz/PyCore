@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace PyaFramework.CoreMvc.TagHelpers
+namespace Py.CoreMvc.TagHelpers
 {
     public class ClientSocketTagHelper : TagHelper
     {

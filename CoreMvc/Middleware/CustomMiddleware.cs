@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PyaFramework.Middleware
+namespace Py.Middleware
 {
     public class CustomMiddleware
     {

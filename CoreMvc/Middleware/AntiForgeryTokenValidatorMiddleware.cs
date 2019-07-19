@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Http;
 
-namespace PyaFramework.Middleware
+namespace Py.Middleware
 {
     public class AntiForgeryTokenValidatorMiddleware
     {
