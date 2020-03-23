@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 
 namespace Py.Core
 {
@@ -20,5 +23,13 @@ namespace Py.Core
         //    }
         //    return columns.ToArray();
         //}
+
+        public static string GetDirectory(this Assembly @this)
+        {
+            var assemblyPath = @this.CodeBase;
+            var uriBuilder = new UriBuilder(assemblyPath);
+            var directory = Path.GetDirectoryName(uriBuilder.Path);
+            return directory;
+        }
     }
 }
