@@ -31,5 +31,17 @@ namespace Py.Core
                 source = source.Where(i => filter(i));
             return source;
         }
+
+        public static void Shuffle<T>(this T[] @this)
+        {
+            var rand = new Random();
+            for (var i = 0; i < @this.Count(); i++)
+            {
+                var k = rand.Next(i + 1);
+                var temp = @this[k];
+                @this[k] = @this[i];
+                @this[i] = temp;
+            }
+        }
     }
 }
