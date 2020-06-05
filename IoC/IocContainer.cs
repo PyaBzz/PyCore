@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Py.IoC
+namespace Baz.IoC
 {
     public enum Injection { Singleton, Transient };
 

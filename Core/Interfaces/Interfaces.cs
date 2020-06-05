@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Py.Core
+namespace Baz.Core
 {
     public interface IClonable { }
 

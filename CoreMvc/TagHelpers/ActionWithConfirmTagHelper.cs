@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Py.Core;
-using Py.CoreMvc;
+using Baz.Core;
+using Baz.CoreMvc;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Py.CoreMvc.TagHelpers
+namespace Baz.CoreMvc.TagHelpers
 {
     [HtmlTargetElement(tag: "ActionWithConfirm", TagStructure = TagStructure.WithoutEndTag, Attributes = "controller-type, method-name")]
     public class ActionWithConfirmTagHelper : TagHelper

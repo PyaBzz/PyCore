@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Py.Services
+namespace Baz.Services
 {
     public static class NameOf
     {

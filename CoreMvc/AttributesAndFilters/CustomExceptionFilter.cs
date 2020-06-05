@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace Py.Attributes
+namespace Baz.Attributes
 {
     [AttributeUsage(AttributeTargets.Method)]
     public class CustomExceptionFilterAttribute : ExceptionFilterAttribute

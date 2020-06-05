@@ -1,4 +1,4 @@
-﻿namespace Py.CoreMvc
+﻿namespace Baz.CoreMvc
 {
     public static class Extensions
     {

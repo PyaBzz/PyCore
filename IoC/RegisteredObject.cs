@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Py.IoC
+namespace Baz.IoC
 {
     public class RegisteredObject
     {

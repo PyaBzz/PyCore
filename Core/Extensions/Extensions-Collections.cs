@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Py.Core
+namespace Baz.Core
 {
     public static partial class Extensions
     {

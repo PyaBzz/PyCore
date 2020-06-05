@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Py.Core;
+using Baz.Core;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Py.CoreMvc
+namespace Baz.CoreMvc
 {
     public static class Short<T> where T : Controller
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using Py.Core;
+using Baz.Core;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Py.CoreMvc.TagHelpers
+namespace Baz.CoreMvc.TagHelpers
 {
     [HtmlTargetElement(tag: "ObjectDetails", Attributes = "Object")]
     public class ObjectDetailsTagHelper : TagHelper

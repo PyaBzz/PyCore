@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace Py.Core
+namespace Baz.Core
 {
     public static partial class Extensions
     {

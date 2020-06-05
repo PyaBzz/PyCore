@@ -7,9 +7,13 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/PyaFramework.csproj"
+                "${workspaceFolder}/BazCore.csproj"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

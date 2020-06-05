@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace Py.CoreMvc
+namespace Baz.CoreMvc
 {
     public static class AreaOf<T> where T : Controller
     {

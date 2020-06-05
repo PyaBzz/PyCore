@@ -1,4 +1,4 @@
-﻿namespace Py.Core
+﻿namespace Baz.Core
 {
     public enum Injection { Singleton, Transient };
 

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Py.Attributes
+namespace Baz.Attributes
 {
     public class ValidateAlphanumericAttribute : ValidationAttribute
     {
