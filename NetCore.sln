@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BazCore", "BazCore\BazCore.csproj", "{A5D5ADEF-ED88-4252-8ED0-0BDE457D0AB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BazCore", "Baz\Baz.csproj", "{A5D5ADEF-ED88-4252-8ED0-0BDE457D0AB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{71113C33-7B2F-4B30-B6F8-C109F27D0F51}"
 EndProject

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BazCore\BazCore.csproj" />
+    <ProjectReference Include="..\Baz\Baz.csproj" />
   </ItemGroup>
 
 </Project>
